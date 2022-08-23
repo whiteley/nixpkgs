@@ -65,6 +65,14 @@ in {
         #   most likely fails as GRUB will probably refuse to install.
       '';
     };
+
+    virtualisation.googleComputeImage.arm64 = mkOption {
+      type = types.bool;
+      default = false;
+      description = lib.mdDoc ''
+        Whether x86_64 or arm64.
+      '';
+    };
   };
 
   #### implementation

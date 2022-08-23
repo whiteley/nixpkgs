@@ -1,16 +1,26 @@
 { config, lib, pkgs, ... }:
+
 with lib;
+
+let
+  cfg = config.virtualisation.googleComputeImage;
+in
+
 {
   imports = [
     ../profiles/headless.nix
     ../profiles/qemu-guest.nix
   ];
 
-
   fileSystems."/" = {
     fsType = "ext4";
     device = "/dev/disk/by-label/nixos";
     autoResize = true;
+  };
+
+  fileSystems."/boot" = {
+    fsType = "vfat";
+    device = "/dev/disk/by-label/ESP";
   };
 
   boot.growPartition = true;
@@ -19,7 +29,7 @@ with lib;
   boot.kernelModules = [ "virtio_pci" "virtio_net" ];
 
   # Generate a GRUB menu.
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = if cfg.arm64 then "/dev/nvme0n1" else "/dev/sda";
   boot.loader.timeout = 0;
 
   # Don't put old configurations in the GRUB menu.  The user has no

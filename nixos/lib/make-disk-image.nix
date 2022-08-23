@@ -382,6 +382,7 @@ let format' = format; in let
       # Some tools assume these exist
       ln -s vda /dev/xvda
       ln -s vda /dev/sda
+      ln -s vda /dev/nvme0n1
       # make systemd-boot find ESP without udev
       mkdir /dev/block
       ln -s /dev/vda1 /dev/block/254:1
