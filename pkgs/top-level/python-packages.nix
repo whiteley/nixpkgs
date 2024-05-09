@@ -13811,6 +13811,8 @@ self: super: with self; {
 
   shamir-mnemonic = callPackage ../development/python-modules/shamir-mnemonic { };
 
+  shandy-sqlfmt = callPackage ../development/python-modules/shandy-sqlfmt { };
+
   shap = callPackage ../development/python-modules/shap { };
 
   shapely = callPackage ../development/python-modules/shapely { };
@@ -15002,6 +15004,10 @@ self: super: with self; {
   textual = callPackage ../development/python-modules/textual { };
 
   textual-dev = callPackage ../development/python-modules/textual-dev { };
+
+  textual-fastdatatable = callPackage ../development/python-modules/textual-fastdatatable { };
+
+  textual-textarea = callPackage ../development/python-modules/textual-textarea { };
 
   textual-universal-directorytree = callPackage ../development/python-modules/textual-universal-directorytree { };
 
